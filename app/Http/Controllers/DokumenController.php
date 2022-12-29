@@ -112,10 +112,22 @@ class DokumenController extends Controller
     {
         $dokumen = Dokumen::query()->where('id', $request->id)->first();
 
-        $dokumen->update([
-            'status' => $request->status,
-            'id_admin' => Auth::user()->id
-        ]);
+        if ($request->status == 3) {
+            $request->validate([
+                'keterangan' => 'required'
+            ]);
+            $dokumen->update([
+                'status' => $request->status,
+                'keterangan' => $request->keterangan,
+                'id_admin' => Auth::user()->id
+            ]);
+        } else {
+            $dokumen->update([
+                'status' => $request->status,
+                'id_admin' => Auth::user()->id
+            ]);
+        }
+
 
         return redirect()->back();
     }

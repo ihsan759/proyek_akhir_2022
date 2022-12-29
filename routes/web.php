@@ -47,6 +47,5 @@ Route::prefix('dokumen')->group(function () {
         Route::post('destroy', 'destroy')->name('dokumen.destroy')->middleware(['auth', 'petugas']);
         Route::get('trash', 'trash')->name('dokumen.trash')->middleware(['auth', 'petugas']);
         Route::get('restore/{id}', 'restore')->name('dokumen.restore')->middleware(['auth', 'petugas']);
-        Route::post('update', 'update')->name('dokumen.update')->middleware(['auth', 'petugas']);
     });
 });

@@ -51,9 +51,11 @@
             <a href="{{ route('dokumen.reject') }}" class="block px-4 py-2 text-sm text-white hover:bg-[#1947ee] opacity-75 hover:opacity-100">
                 Dokumen Reject
             </a>
-            <a href="{{ route('dokumen.trash') }}" class="block px-4 py-2 text-sm text-white hover:bg-[#1947ee] opacity-75 hover:opacity-100">
-                Dokumen Trash
-            </a>
+            @if (auth()->user()->role == 2)    
+                <a href="{{ route('dokumen.trash') }}" class="block px-4 py-2 text-sm text-white hover:bg-[#1947ee] opacity-75 hover:opacity-100">
+                    Dokumen Trash
+                </a>
+            @endif
         </div>
         <button @click="akun = !akun" class="flex items-center text-white opacity-75 w-full hover:opacity-100 py-4 pl-6 hover:bg-[#1947ee] {{ (request()->is('akun/*')) ? 'bg-[#1947ee]' : '' }}">
             <i class="fas fa-user mr-3"></i>

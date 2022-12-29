@@ -38,6 +38,13 @@
                                 <a href="{{ route('dokumen.download', $data->id) }}" class="bg-green-400 py-2 px-3 rounded-lg text-slate-600 hover:text-white hover:bg-green-700">Donwload</a>
                                 @if ($data->status == 3)
                                     <button @click="pesandokumen('{{ $data }}')" type="submit" class="bg-yellow-500 rounded-lg text-slate-600 hover:text-white hover:bg-yellow-700 py-2 px-3">Info</button>
+                                    @if (auth()->user()->role == 2)
+                                        <form action="{{ route('dokumen.delete') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{ $data->id }}">
+                                            <button type="submit" class="bg-red-500 rounded-lg text-slate-600 hover:text-white hover:bg-red-700 py-2 px-3">Delete</button>
+                                        </form>
+                                    @endif
                                 @elseif($data->status == 1)
                                     @if (auth()->user()->role == 2)
                                         <form action="{{ route('dokumen.delete') }}" method="POST">
