@@ -3,7 +3,9 @@
 namespace App\Http;
 
 use App\Http\Middleware\Admin;
+use App\Http\Middleware\AdminOrPetugas;
 use App\Http\Middleware\Petugas;
+use App\Http\Middleware\Warga;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -66,6 +68,8 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'admin' => Admin::class,
-        'petugas' => Petugas::class
+        'petugas' => Petugas::class,
+        'adminorpetugas' => AdminOrPetugas::class,
+        'warga' => Warga::class
     ];
 }

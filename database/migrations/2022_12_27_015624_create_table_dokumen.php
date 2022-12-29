@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('dokumen', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->string('nama', 50);
             $table->string('file');
             $table->integer('status')->default(0);
             $table->integer('id_user');
+            $table->integer('id_admin')->nullable();
+            $table->text('keterangan')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

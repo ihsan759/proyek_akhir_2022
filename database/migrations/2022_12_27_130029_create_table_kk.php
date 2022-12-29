@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('kartu_keluarga', function (Blueprint $table) {
-            $table->string('id_kk')->primary();
+            $table->string('id_kk', 16)->primary();
             $table->string('rt', 3);
             $table->string('rw', 3);
             $table->string('alamat');

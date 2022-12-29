@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('nama', 50);
             $table->string('no_hp', 15);
-            $table->string('rt', 3);
-            $table->string('rw', 3);
-            $table->integer('role');
+            $table->string('rt', 3)->nullable();
+            $table->string('rw', 3)->nullable();
+            $table->integer('role')->default(2);
             $table->string('email', 50)->unique();
             $table->string('password');
             $table->rememberToken();
