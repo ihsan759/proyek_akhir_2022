@@ -21,14 +21,14 @@
         </button>
         <!-- Dropdown warga -->
         <div x-show="warga" class="right-0 py-2 mt-2 rounded-md shadow-xl ">
-            <a href="#" class="block px-4 py-2 text-sm text-white opacity-75 hover:opacity-100 hover:bg-[#1947ee]">
-                Daftar Warga
-            </a>
             @if (auth()->user()->role == 2)    
-                <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-[#1947ee] opacity-75 hover:opacity-100">
-                    Approve Warga
+                <a href="{{ route('warga.create') }}" class="block px-4 py-2 text-sm text-white opacity-75 hover:opacity-100 hover:bg-[#1947ee]">
+                    Daftar Warga
                 </a>
             @endif
+            <a href="{{ route('warga.index') }}" class="block px-4 py-2 text-sm text-white hover:bg-[#1947ee] opacity-75 hover:opacity-100">
+                List Warga
+            </a>
         </div>
         <button @click="dokumen = !dokumen" class="flex items-center text-white opacity-75 hover:opacity-100 w-full py-4 pl-6 hover:bg-[#1947ee] {{ (request()->is('dokumen/*')) ? 'bg-[#1947ee]' : '' }}">
             <i x-show="!dokumen" class="fas fa-folder mr-3"></i>

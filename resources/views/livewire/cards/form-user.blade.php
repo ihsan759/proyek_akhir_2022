@@ -93,13 +93,8 @@
             <div class="mb-5 pt-1  rounded bg-gray-200">
                 <label class="block text-gray-700 text-sm font-bold mb-1 ml-3" for="rt">Role</label>
                 <select class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-blue-600 transition duration-500 px-3 pb-1" id="role" name="role">
-                    @if (auth()->user()->role == 1)
-                        <option value="1">Admin</option>
-                        <option value="2">Petugas</option>
-                        <option value="3">Warga</option>
-                    @else
-                        <option value="3">Warga</option>
-                    @endif
+                    <option value="1">Admin</option>
+                    <option value="2">Petugas</option>
                 </select>
             </div>
             @error('role')    

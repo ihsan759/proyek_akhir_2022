@@ -4,6 +4,7 @@ use App\Http\Controllers\AkunController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DokumenController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\WargaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,5 +48,14 @@ Route::prefix('dokumen')->group(function () {
         Route::post('destroy', 'destroy')->name('dokumen.destroy')->middleware(['auth', 'petugas']);
         Route::get('trash', 'trash')->name('dokumen.trash')->middleware(['auth', 'petugas']);
         Route::get('restore/{id}', 'restore')->name('dokumen.restore')->middleware(['auth', 'petugas']);
+    });
+});
+
+Route::prefix('warga')->group(function () {
+    Route::controller(WargaController::class)->group(function () {
+        Route::get('create', 'create')->name('warga.create')->middleware(['auth', 'petugas']);
+        Route::post('ktp/store', 'storeKtp')->name('warga.ktp.store')->middleware(['auth', 'petugas']);
+        Route::post('kk/store', 'storeKk')->name('warga.kk.store')->middleware(['auth', 'petugas']);
+        Route::get('index', 'index')->name('warga.index')->middleware(['auth', 'adminorpetugas']);
     });
 });
