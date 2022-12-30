@@ -3,16 +3,20 @@
         <i class="fas fa-list mr-3"></i> Warga
     </p>
     <form method="get">
-        <input class="border-solid border border-gray-300 p-2 w-full md:w-1/4" 
-            type="text" placeholder="Search Warga" wire:model="term" x-model="term"/>
-        <input type="text" name="" id="" x-model="term">
+    <input class="border-solid border border-gray-300 p-2 w-full md:w-1/4" 
+        type="text" placeholder="Search Warga" wire:model="term" x-model="term"/>
     </form>
     <div wire:loading>Searching Warga...</div>
-    <!-- 
-        notice that $term is available as a public 
-        variable, even though it's not part of the 
-        data array 
-    -->
+        <!-- 
+            notice that $term is available as a public 
+            variable, even though it's not part of the 
+            data array 
+        -->
+    <form action="{{ route('warga.export') }}" method="post">
+        @csrf
+        <input type="hidden" name="nama" id="" x-model="term">
+        <button class="bg-green-500 text-white py-2 px-3 hover:bg-green-700 shadow-lg rounded-lg mt-4">Excel</button>
+    </form>
     <div class="bg-white overflow-auto mt-5">
         <table class="min-w-full bg-white">
             <thead class="bg-gray-800 text-white">
@@ -21,6 +25,7 @@
                     <th class="text-left py-3 px-4 uppercase font-semibold text-sm">NIK</th>
                     <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Nama</th>
                     <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Gender</th>
+                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Tanggal Lahir</th>
                     <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Agama</th>
                     <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Gol. Darah</th>
                     <th class="text-left py-3 px-4 uppercase font-semibold text-sm">RT</th>
@@ -42,6 +47,7 @@
                                     Wanita
                                 @endif
                             </td>
+                            <td class="text-left py-3 px-4">{{ $data->tgl_lahir }}</td>
                             <td class="text-left py-3 px-4">{{ $data->agama->nama }}</td>
                             <td class="text-left py-3 px-4">
                                 @if ($data->gol_darah == 1)
@@ -72,6 +78,7 @@
                                         Wanita
                                     @endif
                                 </td>
+                                <td class="text-left py-3 px-4">{{ $data->tgl_lahir }}</td>
                                 <td class="text-left py-3 px-4">{{ $data->agama->nama }}</td>
                                 <td class="text-left py-3 px-4">
                                     @if ($data->gol_darah == 1)

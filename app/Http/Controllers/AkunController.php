@@ -45,6 +45,17 @@ class AkunController extends Controller
         return redirect()->route('akun');
     }
 
+    public function update(Request $request)
+    {
+        $user = User::query()->where('id', $request->id)->first();
+
+        $user->fill($request->all());
+
+        $user->save();
+
+        return redirect()->route('akun');
+    }
+
     public function delete(Request $request)
     {
         $akun = User::query()->where('id', $request->id)->first();
