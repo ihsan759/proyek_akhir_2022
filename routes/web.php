@@ -24,7 +24,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middle
 Route::get('/home', [HomeController::class, "index"])->name('home')->middleware('auth');
 Route::prefix('akun')->group(function () {
     Route::controller(AkunController::class)->group(function () {
-        Route::middleware(['auth', 'adminorpetugas'])->group(function () {
+        Route::middleware(['auth', 'admin'])->group(function () {
             Route::get('index', 'index')->name('akun');
             Route::post('store', 'store')->name('akun.store');
             Route::post('destroy', 'destroy')->name('akun.destroy');

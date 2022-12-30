@@ -64,19 +64,21 @@
                 </a>
             @endif
         </div>
-        <button @click="akun = !akun" class="flex items-center text-white opacity-75 w-full hover:opacity-100 py-4 pl-6 hover:bg-[#1947ee] {{ (request()->is('akun/*')) ? 'bg-[#1947ee]' : '' }}">
-            <i class="fas fa-user mr-3"></i>
-            Akun
-        </button>
-        <!-- Dropdown akun -->
-        <div x-show="akun" class="right-0 py-2 mt-2 rounded-md shadow-xl ">
-            <a href="#" class="block px-4 py-2 text-sm text-white opacity-75 hover:opacity-100 hover:bg-[#1947ee]">
-                Daftar Akun
-            </a>
-            <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-[#1947ee] opacity-75 hover:opacity-100">
-                Akun Tidak Aktif
-            </a>
-        </div>
+        @if (auth()->user()->role == 1)
+            <button @click="akun = !akun" class="flex items-center text-white opacity-75 w-full hover:opacity-100 py-4 pl-6 hover:bg-[#1947ee] {{ (request()->is('akun/*')) ? 'bg-[#1947ee]' : '' }}">
+                <i class="fas fa-user mr-3"></i>
+                Akun
+            </button>
+            <!-- Dropdown akun -->
+            <div x-show="akun" class="right-0 py-2 mt-2 rounded-md shadow-xl ">
+                <a href="{{ route('akun') }}" class="block px-4 py-2 text-sm text-white opacity-75 hover:opacity-100 hover:bg-[#1947ee]">
+                    Daftar Akun
+                </a>
+                <a href="{{ route('akun.trash') }}" class="block px-4 py-2 text-sm text-white hover:bg-[#1947ee] opacity-75 hover:opacity-100">
+                    Akun Tidak Aktif
+                </a>
+            </div>
+        @endif
         <button @click="myaccount=true" class="flex items-center w-full text-white opacity-75 hover:opacity-100 py-2 pl-4 hover:bg-[#1947ee]">
             <i class="fas fa-user mr-3"></i>
             My Account
