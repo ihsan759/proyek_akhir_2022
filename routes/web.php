@@ -57,5 +57,6 @@ Route::prefix('warga')->group(function () {
         Route::post('ktp/store', 'storeKtp')->name('warga.ktp.store')->middleware(['auth', 'petugas']);
         Route::post('kk/store', 'storeKk')->name('warga.kk.store')->middleware(['auth', 'petugas']);
         Route::get('index', 'index')->name('warga.index')->middleware(['auth', 'adminorpetugas']);
+        Route::get('export', 'export')->name('warga.export')->middleware(['auth', 'adminorpetugas']);
     });
 });

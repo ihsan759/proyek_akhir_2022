@@ -15,4 +15,6 @@ Alpine.data("data", () => ({
         this.dataPesan = JSON.parse(valueData);
         this.Pesan = true;
     },
+
+    term: "",
 }));

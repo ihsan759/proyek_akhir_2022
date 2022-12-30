@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\WargaExport;
 use App\Models\KartuKeluarga;
 use App\Models\Warga;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class WargaController extends Controller
 {
@@ -23,11 +26,11 @@ class WargaController extends Controller
     {
         $kartu = $request->validate([
             'id_kk' => 'required|max:16|unique:kartu_keluarga',
-            'rt' => 'required|max:3',
-            'rw' => 'required|max:3',
             'alamat' => 'required|max:255',
         ]);
 
+        $kartu['rt'] = Auth::user()->rt;
+        $kartu['rw'] = Auth::user()->rw;
         $kartu['created_at'] = now();
         $kartu['updated_at'] = now();
 
@@ -56,5 +59,10 @@ class WargaController extends Controller
         Warga::query()->insert($ktp);
 
         return redirect()->route('warga.create');
+    }
+
+    public function export(Request $request)
+    {
+        return Excel::download(new WargaExport($request->nama), 'warga.xlsx');
     }
 }

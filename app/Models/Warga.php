@@ -8,18 +8,24 @@ use Illuminate\Database\Eloquent\Model;
 class Warga extends Model
 {
     use HasFactory;
+    use Search;
 
-    protected $guarded = ['id'];
+    protected $guarded = ['nik'];
 
     protected $table = "warga";
 
+    protected $searchable = [
+        'nama',
+        'nik',
+    ];
+
     public function agama()
     {
-        return $this->belongsTo(Agama::class, 'id_agama', 'nik');
+        return $this->belongsTo(Agama::class, 'id_agama');
     }
 
     public function kk()
     {
-        return $this->belongsTo(KartuKeluarga::class, 'id_kk', 'nik');
+        return $this->belongsTo(KartuKeluarga::class, 'id_kk', 'id_kk');
     }
 }

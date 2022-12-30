@@ -5,7 +5,7 @@
             <h1 class="text-center text-lg">Form Data Warga</h1>
             <div class="px-3">
                 <label>NIK</label>
-                <input type="text" name="nik" class="w-full bg-gray-200 py-3 px-2 rounded shadow-sm border border-gray-200 focus:outline-none mt-2">
+                <input type="number" name="nik" class="w-full bg-gray-200 py-3 px-2 rounded shadow-sm border border-gray-200 focus:outline-none mt-2">
                 @error('nik')
                     <div class="text-red-500">
                         {{ $message }}
@@ -117,24 +117,6 @@
                 <label>Nomor Kartu Keluarga</label>
                 <input type="number" name="id_kk" class="w-full bg-gray-200 py-3 px-2 rounded shadow-sm border border-gray-200 focus:outline-none mt-2">
                 @error('id_kk')
-                    <div class="text-red-500">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
-            <div class="px-3 mt-3">
-                <label>RT</label>
-                <input type="number" name="rt" class="w-full bg-gray-200 py-3 px-2 rounded shadow-sm border border-gray-200 focus:outline-none mt-2">
-                @error('rt')
-                    <div class="text-red-500">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
-            <div class="px-3 mt-3">
-                <label>RW</label>
-                <input type="number" name="rw" class="w-full bg-gray-200 py-3 px-2 rounded shadow-sm border border-gray-200 focus:outline-none mt-2">
-                @error('rw')
                     <div class="text-red-500">
                         {{ $message }}
                     </div>
