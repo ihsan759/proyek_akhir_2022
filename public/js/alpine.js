@@ -17,4 +17,5 @@ Alpine.data("data", () => ({
     },
 
     term: "",
+    info: true,
 }));

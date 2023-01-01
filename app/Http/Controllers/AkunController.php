@@ -42,7 +42,7 @@ class AkunController extends Controller
 
         User::query()->create($akun);
 
-        return redirect()->route('akun');
+        return redirect()->route('akun')->with('message', 'Berhasil membuat profile');
     }
 
     public function update(Request $request)
@@ -53,29 +53,29 @@ class AkunController extends Controller
 
         $user->save();
 
-        return redirect()->route('akun');
+        return redirect()->route('akun')->with('message', 'Berhasil update Akun');
     }
 
     public function delete(Request $request)
     {
-        $akun = User::query()->where('id', $request->id)->first();
+        $akun = User::find($request->id);
 
         $akun->delete();
 
-        return redirect()->route('akun');
+        return redirect()->route('akun')->with('message', 'Berhasil meng-nonaktifkan akun');
     }
 
-    public function destroy(Request $request)
-    {
-        User::query()->where('id', $request->id)->forceDelete();
+    // public function destroy(Request $request)
+    // {
+    //     User::query()->where('id', $request->id)->forceDelete();
 
-        return redirect()->route('akun.trash');
-    }
+    //     return redirect()->route('akun.trash')->with('message', 'Berhasil menghapus akun');
+    // }
 
     public function restore($id)
     {
         User::withTrashed()->find($id)->restore();
 
-        return redirect()->route('akun.trash');
+        return redirect()->route('akun.trash')->with('message', 'Berhasil mengaktifkan akun');
     }
 }

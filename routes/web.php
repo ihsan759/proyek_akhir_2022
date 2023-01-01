@@ -28,7 +28,7 @@ Route::prefix('akun')->group(function () {
             Route::get('index', 'index')->name('akun');
             Route::post('store', 'store')->name('akun.store');
             Route::post('update', 'update')->name('akun.update');
-            Route::post('destroy', 'destroy')->name('akun.destroy');
+            // Route::post('destroy', 'destroy')->name('akun.destroy');
             Route::post('delete', 'delete')->name('akun.delete');
             Route::get('restore/{id}', 'restore')->name('akun.restore');
             Route::get('trash', 'trash')->name('akun.trash');
@@ -59,5 +59,6 @@ Route::prefix('warga')->group(function () {
         Route::post('kk/store', 'storeKk')->name('warga.kk.store')->middleware(['auth', 'petugas']);
         Route::get('index', 'index')->name('warga.index')->middleware(['auth', 'adminorpetugas']);
         Route::post('export', 'export')->name('warga.export')->middleware(['auth', 'adminorpetugas']);
+        Route::post('destroy', 'destroy')->name('warga.destroy')->middleware(['auth', 'adminorpetugas']);
     });
 });

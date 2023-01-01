@@ -8,6 +8,7 @@
             <th>Tanggal Lahir</th>
             <th>Agama</th>
             <th>Gol. Darah</th>
+            <th>Pekerjaan</th>
             <th>RT</th>
             <th>RW</th>
             <th>No. Kartu Keluarga</th>
@@ -39,6 +40,7 @@
                         O
                     @endif
                 </td>
+                <td>{{ $item->pekerjaan }}</td>
                 <td>{{ $item->rt }}</td>
                 <td>{{ $item->rw }}</td>
                 <td>{{ $item->kk }}</td>

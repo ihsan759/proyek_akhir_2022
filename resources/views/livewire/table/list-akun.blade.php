@@ -37,18 +37,18 @@
                         <td class="text-center py-3 px-4 flex items-center justify-around gap-2">
                             @if($page == 'trash')
                                 <a href="{{ route('akun.restore', $account->id) }}" class="bg-green-400 py-2 px-3 rounded-lg text-slate-600 hover:text-white hover:bg-green-700">Restore</a>
-                                <form action="{{ route('akun.destroy') }}" method="POST">
+                                {{-- <form action="{{ route('akun.destroy') }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="id" value="{{ $account->id }}">
                                     <button type="submit" class="bg-red-500 rounded-lg text-slate-600 hover:text-white hover:bg-red-700 py-2 px-3">Delete</button>
-                                </form>
+                                </form> --}}
                             @elseif($page == 'buat')
                                 @if (auth()->user()->id != $account->id)
                                     <button @click="test('{{ $account }}')" class="bg-yellow-400 py-2 px-3 rounded-lg text-slate-600 hover:text-white hover:bg-yellow-700">Detail</button>
                                     <form action="{{ route('akun.delete') }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="id" value="{{ $account->id }}">
-                                        <button type="submit" class="bg-red-500 rounded-lg text-slate-600 hover:text-white hover:bg-red-700 py-2 px-3">Delete</button>
+                                        <button type="submit" class="bg-red-500 rounded-lg text-slate-600 hover:text-white hover:bg-red-700 py-2 px-3" onclick="return confirm('Apakah anda ingin mengnonaktifkan akun ini ?')">Delete</button>
                                     </form>
                                 @endif
                             @endif

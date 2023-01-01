@@ -14,10 +14,10 @@ class Warga extends Model
 
     protected $table = "warga";
 
-    protected $searchable = [
-        'nama',
-        'nik',
-    ];
+    // protected $searchable = [
+    //     'nama',
+    //     'nik',
+    // ];
 
     public function agama()
     {

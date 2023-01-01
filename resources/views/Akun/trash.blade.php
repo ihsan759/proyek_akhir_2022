@@ -8,6 +8,9 @@
             @livewire('dashboard.sidebar-mobile')
             <div class="w-full overflow-x-hidden border-t flex flex-col">
                 <main class="w-full flex-grow p-6">
+                    @if ($message = Session::get('message'))
+                        @livewire('dashboard.info', ['message' => $message])
+                    @endif
                     @livewire('cards.profile')
                     <p class="text-4xl text-center">List Akun</p>
                     @livewire('table.list-akun',['accounts' => $accounts, 'page' => 'trash'])

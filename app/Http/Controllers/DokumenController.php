@@ -64,7 +64,7 @@ class DokumenController extends Controller
             'id_user' => Auth::user()->id
         ]);
 
-        return redirect()->route('dokumen.pending');
+        return redirect()->route('dokumen.pending')->with('message', 'Berhasil mengirimkan dokumen/surat');
     }
 
     public function download($id)
@@ -80,7 +80,7 @@ class DokumenController extends Controller
     {
         Dokumen::query()->where('id', $request->id)->delete();
 
-        return redirect()->back();
+        return redirect()->route('dokumen.pending')->with('message', 'Berhasil meng-nonaktifkan dokumen/surat');
     }
 
     public function trash()
@@ -94,7 +94,7 @@ class DokumenController extends Controller
     {
         Dokumen::withTrashed()->find($id)->restore();
 
-        return redirect()->route('dokumen.trash');
+        return redirect()->route('dokumen.trash')->with('message', 'Berhasil mengaktifkan dokumen/surat');
     }
 
     public function destroy(Request $request)
@@ -105,7 +105,7 @@ class DokumenController extends Controller
 
         $dokumen->forceDelete();
 
-        return redirect()->route('dokumen.trash');
+        return redirect()->route('dokumen.trash')->with('message', 'Berhasil menghapus dokumen/surat');
     }
 
     public function status(Request $request)
@@ -129,6 +129,6 @@ class DokumenController extends Controller
         }
 
 
-        return redirect()->back();
+        return redirect()->route('dokumen.pending')->with('message', 'Berhasil mengubah status dokumen/surat');
     }
 }

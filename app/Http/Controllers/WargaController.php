@@ -36,7 +36,7 @@ class WargaController extends Controller
 
         KartuKeluarga::query()->insert($kartu);
 
-        return redirect()->route('warga.create');
+        return redirect()->route('warga.create')->with('message', 'Berhasil membuat data kartu keluarga');
     }
 
     public function storeKtp(Request $request)
@@ -58,11 +58,18 @@ class WargaController extends Controller
 
         Warga::query()->insert($ktp);
 
-        return redirect()->route('warga.create');
+        return redirect()->route('warga.create')->with('message', 'Berhasil membuat data warga');
     }
 
     public function export(Request $request)
     {
         return Excel::download(new WargaExport($request->nama), 'warga.xlsx');
+    }
+
+    public function destroy(Request $request)
+    {
+        Warga::query()->where('nik', $request->nik)->delete();
+
+        return redirect()->route('warga.index')->with('message', 'Berhasil menghapus data warga');
     }
 }

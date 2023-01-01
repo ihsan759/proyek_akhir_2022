@@ -56,7 +56,7 @@ class FormUser extends Component
 
         $user->save();
 
-        return redirect()->with(['success' => 'Berhasil update profile'])->route('home');
+        return redirect()->with('message', 'Berhasil update profile')->route('home');
     }
 
 

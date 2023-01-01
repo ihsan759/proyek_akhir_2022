@@ -42,7 +42,7 @@
                                         <form action="{{ route('dokumen.delete') }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $data->id }}">
-                                            <button type="submit" class="bg-red-500 rounded-lg text-slate-600 hover:text-white hover:bg-red-700 py-2 px-3">Delete</button>
+                                            <button type="submit" class="bg-red-500 rounded-lg text-slate-600 hover:text-white hover:bg-red-700 py-2 px-3" onclick="return confirm('Apakah anda ingin memindahkan ke sampah dokumen/surat ini ?')">Delete</button>
                                         </form>
                                     @endif
                                 @elseif($data->status == 1)
@@ -50,7 +50,7 @@
                                         <form action="{{ route('dokumen.delete') }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $data->id }}">
-                                            <button type="submit" class="bg-red-500 rounded-lg text-slate-600 hover:text-white hover:bg-red-700 py-2 px-3">Delete</button>
+                                            <button type="submit" class="bg-red-500 rounded-lg text-slate-600 hover:text-white hover:bg-red-700 py-2 px-3" onclick="return confirm('Apakah anda ingin memindahkan ke sampah dokumen/surat ini ?')">Delete</button>
                                         </form>
                                     @else
                                         <button @click="pesandokumen('{{ $data }}')" type="submit" class="bg-red-500 rounded-lg text-slate-600 hover:text-white hover:bg-red-700 py-2 px-3">Reject</button>
@@ -67,7 +67,7 @@
                                 <form action="{{ route('dokumen.destroy') }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="id" value="{{ $data->id }}">
-                                    <button type="submit" class="bg-red-500 rounded-lg text-slate-600 hover:text-white hover:bg-red-700 py-2 px-3">Delete</button>
+                                    <button type="submit" class="bg-red-500 rounded-lg text-slate-600 hover:text-white hover:bg-red-700 py-2 px-3" onclick="return confirm('Apakah anda ingin menghapus dokumen/surat ini ?')">Delete</button>
                                 </form>
                             @endif
                         </td>
