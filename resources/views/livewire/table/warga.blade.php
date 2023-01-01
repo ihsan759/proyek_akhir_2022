@@ -3,8 +3,8 @@
         <i class="fas fa-list mr-3"></i> Warga
     </p>
     <form method="get">
-    <input class="border-solid border border-gray-300 p-2 w-full md:w-1/4" 
-        type="text" placeholder="Search Warga" wire:model="term" x-model="term"/>
+        <input class="border-solid border border-gray-300 p-2 w-full md:w-1/4" 
+            type="text" placeholder="Search Warga" wire:model="term" x-model="term"/>
     </form>
     <div wire:loading>Searching Warga...</div>
         <!-- 
@@ -36,8 +36,8 @@
                 </tr>
             </thead>
             <tbody class="text-gray-700">
-                @if ($term == "")
-                    @foreach ($warga as $data)  
+                @foreach ($warga as $data)  
+                    @if (auth()->user()->role == 1)
                         <tr>
                             <td class="text-left py-3 px-4">{{ $loop->iteration }}</td>
                             <td class="text-left py-3 px-4">{{ $data->nik }}</td>
@@ -74,51 +74,51 @@
                                 </form>
                             </td>
                         </tr>
-                    @endforeach
                     @else
-                        @foreach ($warga as $data)  
-                        <tr>
-                            <td class="text-left py-3 px-4">{{ $loop->iteration }}</td>
-                            <td class="text-left py-3 px-4">{{ $data->nik }}</td>
-                            <td class="text-left py-3 px-4">{{ $data->wargaNama }}</td>
-                            <td class="text-left py-3 px-4">
-                                @if ($data->gender == 1)
-                                    Pria
-                                @else
-                                    Wanita
-                                @endif
-                            </td>
-                            <td class="text-left py-3 px-4">{{ $data->tgl_lahir }}</td>
-                            <td class="text-left py-3 px-4">{{ $data->agama }}</td>
-                            <td class="text-left py-3 px-4">
-                                @if ($data->gol_darah == 1)
-                                    A
-                                @elseif($data->gol_darah == 2)
-                                    B
-                                @elseif($data->gol_darah == 3)
-                                    AB
-                                @else
-                                    O
-                                @endif
-                            </td>
-                            <td class="text-left py-3 px-4">{{ $data->pekerjaan }}</td>
-                            <td class="text-left py-3 px-4">{{ $data->rt }}</td>
-                            <td class="text-left py-3 px-4">{{ $data->rw }}</td>
-                            <td class="text-left py-3 px-4">{{ $data->kk }}</td>
-                            <td class="text-left py-3 px-4">
-                                <form action="{{ route('warga.destroy') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="nik" value="{{ $data->nik }}">
-                                    <button type="submit" class="bg-red-500 rounded-lg text-slate-600 hover:text-white hover:bg-red-700 py-2 px-3" onclick="return confirm('Apakah anda ingin menghapus data warga ini ?')">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
+                        @if (auth()->user()->rt == $data->rt && auth()->user()->rw == $data->rw)
+                            <tr>
+                                <td class="text-left py-3 px-4">{{ $loop->iteration }}</td>
+                                <td class="text-left py-3 px-4">{{ $data->nik }}</td>
+                                <td class="text-left py-3 px-4">{{ $data->wargaNama }}</td>
+                                <td class="text-left py-3 px-4">
+                                    @if ($data->gender == 1)
+                                        Pria
+                                    @else
+                                        Wanita
+                                    @endif
+                                </td>
+                                <td class="text-left py-3 px-4">{{ $data->tgl_lahir }}</td>
+                                <td class="text-left py-3 px-4">{{ $data->agama }}</td>
+                                <td class="text-left py-3 px-4">
+                                    @if ($data->gol_darah == 1)
+                                        A
+                                    @elseif($data->gol_darah == 2)
+                                        B
+                                    @elseif($data->gol_darah == 3)
+                                        AB
+                                    @else
+                                        O
+                                    @endif
+                                </td>
+                                <td class="text-left py-3 px-4">{{ $data->pekerjaan }}</td>
+                                <td class="text-left py-3 px-4">{{ $data->rt }}</td>
+                                <td class="text-left py-3 px-4">{{ $data->rw }}</td>
+                                <td class="text-left py-3 px-4">{{ $data->kk }}</td>
+                                <td class="text-left py-3 px-4">
+                                    <form action="{{ route('warga.destroy') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="nik" value="{{ $data->nik }}">
+                                        <button type="submit" class="bg-red-500 rounded-lg text-slate-600 hover:text-white hover:bg-red-700 py-2 px-3" onclick="return confirm('Apakah anda ingin menghapus data warga ini ?')">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endif
                     @endif
+                @endforeach
             </tbody>
         </table>
-        <div class="px-4 mt-4">
-            {{$warga->links()}}
-        </div>
+    </div>
+    <div class="px-4 mt-4">
+        {{$warga->links()}}
     </div>
 </div>

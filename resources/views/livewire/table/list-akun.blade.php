@@ -1,4 +1,11 @@
 <div class="w-full mt-12">
+    <div class="mb-5">
+        <form method="get">
+            <input class="border-solid border border-gray-300 p-2 w-full md:w-1/4" 
+                type="text" placeholder="Search Akun" wire:model="search" x-model="term"/>
+        </form>
+        <div wire:loading>Searching Akun...</div>
+    </div>
     @if ($page == 'buat')
         <button @click="createAccount=true" class="rounded-lg bg-blue-500 py-2 px-4 mb-2 text-white hover:bg-blue-800">Buat Akun</button>
     @endif
@@ -57,5 +64,8 @@
                 @endforeach
             </tbody>
         </table>
+    </div>
+    <div class="px-4 mt-4">
+        {{$accounts->links()}}
     </div>
 </div>

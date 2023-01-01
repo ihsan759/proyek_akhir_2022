@@ -143,6 +143,13 @@
                 <label class="block text-gray-700 text-sm font-bold mb-1 ml-3" for="rt">RW</label>
                 <input type="number" id="rt" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-blue-600 transition duration-500 px-3 pb-1" name="rw" autocomplete="off" x-model="dataAccount.rw"/>
             </div>
+            <div class="mb-5 pt-1  rounded bg-gray-200">
+                <label class="block text-gray-700 text-sm font-bold mb-1 ml-3" for="rt">Role</label>
+                <select class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-blue-600 transition duration-500 px-3 pb-1" id="role" name="role" x-model="dataAccount.role">
+                    <option value="1">Admin</option>
+                    <option value="2">Petugas</option>
+                </select>
+            </div>
             <div class="mb-5 pt-1 rounded bg-gray-200">
                 <label class="block text-gray-700 text-sm font-bold mb-1 ml-3" for="email">Email</label>
                 <input type="text" id="email" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-blue-600 transition duration-500 px-3 pb-3" name="email" autocomplete="off" x-model="dataAccount.email"/>

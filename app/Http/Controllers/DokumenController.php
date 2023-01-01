@@ -11,35 +11,41 @@ class DokumenController extends Controller
 {
     public function pending()
     {
-        if (Auth::user()->role == 1) {
-            $dokumen = Dokumen::query()->with('dokumen')->where('status', 1)->get();
-        } else {
-            $dokumen = Dokumen::query()->with('dokumen')->where('id_user', Auth::user()->id)->where('status', 1)->get();
-        }
+        // if (Auth::user()->role == 1) {
+        //     $dokumen = Dokumen::query()->with('dokumen')->where('status', 1)->get();
+        // } else {
+        //     $dokumen = Dokumen::query()->with('dokumen')->where('id_user', Auth::user()->id)->where('status', 1)->get();
+        // }
 
-        return view('Dokumen.index', compact('dokumen'));
+        $page = 'pending';
+
+        return view('Dokumen.index', compact('page'));
     }
 
     public function approve()
     {
-        if (Auth::user()->role == 1) {
-            $dokumen = Dokumen::query()->with(['dokumen', 'dokumenAdmin'])->where('status', 2)->get();
-        } else {
-            $dokumen = Dokumen::query()->with(['dokumen', 'dokumenAdmin'])->where('id_user', Auth::user()->id)->where('status', 2)->get();
-        }
+        // if (Auth::user()->role == 1) {
+        //     $dokumen = Dokumen::query()->with(['dokumen', 'dokumenAdmin'])->where('status', 2)->get();
+        // } else {
+        //     $dokumen = Dokumen::query()->with(['dokumen', 'dokumenAdmin'])->where('id_user', Auth::user()->id)->where('status', 2)->get();
+        // }
 
-        return view('Dokumen.index', compact('dokumen'));
+        $page = 'approve';
+
+        return view('Dokumen.index', compact('page'));
     }
 
     public function reject()
     {
-        if (Auth::user()->role == 1) {
-            $dokumen = Dokumen::query()->with(['dokumen', 'dokumenAdmin'])->where('status', 3)->get();
-        } else {
-            $dokumen = Dokumen::query()->with(['dokumen', 'dokumenAdmin'])->where('id_user', Auth::user()->id)->where('status', 3)->get();
-        }
+        // if (Auth::user()->role == 1) {
+        //     $dokumen = Dokumen::query()->with(['dokumen', 'dokumenAdmin'])->where('status', 3)->get();
+        // } else {
+        //     $dokumen = Dokumen::query()->with(['dokumen', 'dokumenAdmin'])->where('id_user', Auth::user()->id)->where('status', 3)->get();
+        // }
 
-        return view('Dokumen.index', compact('dokumen'));
+        $page = 'reject';
+
+        return view('Dokumen.index', compact('page'));
     }
 
     public function create()
@@ -85,9 +91,11 @@ class DokumenController extends Controller
 
     public function trash()
     {
-        $dokumen = Dokumen::onlyTrashed()->with(['dokumen', 'dokumenAdmin'])->where('id_user', Auth::user()->id)->get();
+        // $dokumen = Dokumen::onlyTrashed()->with(['dokumen', 'dokumenAdmin'])->where('id_user', Auth::user()->id)->get();
 
-        return view('Dokumen.index', compact('dokumen'));
+        $page = 'trash';
+
+        return view('Dokumen.index', compact('page'));
     }
 
     public function restore($id)

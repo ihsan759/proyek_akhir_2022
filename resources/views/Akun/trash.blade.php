@@ -13,7 +13,7 @@
                     @endif
                     @livewire('cards.profile')
                     <p class="text-4xl text-center">List Akun</p>
-                    @livewire('table.list-akun',['accounts' => $accounts, 'page' => 'trash'])
+                    @livewire('table.list-akun',['page' => 'trash'])
                 </main>
             </div>
         </div>

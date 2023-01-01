@@ -13,7 +13,7 @@
                     @endif
                     @livewire('cards.profile')
                     <p class="text-4xl text-center">Daftar Dokumen</p>
-                    @livewire('table.list-dokumen', ['dokumen' => $dokumen])
+                    @livewire('table.list-dokumen', ['page' => $page])
                 </main>
             </div>
         </div>

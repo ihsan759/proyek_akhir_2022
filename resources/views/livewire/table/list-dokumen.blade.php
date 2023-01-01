@@ -7,6 +7,8 @@
                     <th class="w-[5%] text-center py-3 px-4 uppercase font-semibold text-sm">No</th>
                     <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Nama</th>
                     <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Status</th>
+                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">RT</th>
+                    <th class="text-center py-3 px-4 uppercase font-semibold text-sm">RW</th>
                     <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Admin</th>
                     <th class="w-[12%] text-center py-3 px-4 uppercase font-semibold text-sm">Aksi</th>
                 </tr>
@@ -26,6 +28,8 @@
                                 Reject
                             @endif
                         </td>
+                        <td class="text-center py-3 px-4">{{ $data->dokumen->rt }}</td>
+                        <td class="text-center py-3 px-4">{{ $data->dokumen->rw }}</td>
                         <td class="text-center py-3 px-4">
                             @if ($data->dokumenAdmin != null)
                                 {{$data->dokumenAdmin->nama}}
@@ -75,5 +79,8 @@
                 @endforeach
             </tbody>
         </table>
+    </div>
+    <div class="px-4 mt-4">
+        {{$dokumen->links()}}
     </div>
 </div>
