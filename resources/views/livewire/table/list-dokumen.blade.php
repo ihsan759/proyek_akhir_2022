@@ -28,8 +28,20 @@
                                 Reject
                             @endif
                         </td>
-                        <td class="text-center py-3 px-4">{{ $data->dokumen->rt }}</td>
-                        <td class="text-center py-3 px-4">{{ $data->dokumen->rw }}</td>
+                        <td class="text-center py-3 px-4">
+                            @if ($data->dokumen != null)
+                                {{$data->dokumen->rt}}
+                            @else
+                                Akun telah dihapus
+                            @endif
+                        </td>
+                        <td class="text-center py-3 px-4">
+                            @if ($data->dokumen != null)
+                                {{$data->dokumen->rw}}
+                            @else
+                                Akun telah dihapus
+                            @endif
+                        </td>
                         <td class="text-center py-3 px-4">
                             @if ($data->dokumenAdmin != null)
                                 {{$data->dokumenAdmin->nama}}
