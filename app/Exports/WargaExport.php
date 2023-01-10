@@ -20,6 +20,6 @@ class WargaExport implements FromView
     public function view(): View
     {
         $data = DB::table('warga')->join('agama', 'agama.id', '=', 'warga.id_agama')->join('kartu_keluarga', 'kartu_keluarga.id_kk', '=', 'warga.id_kk')->select('warga.nik as nik', 'warga.nama as wargaNama', 'warga.gender as gender', 'agama.nama as agama', 'warga.gol_darah as gol_darah', 'warga.tgl_lahir as tgl_lahir', 'kartu_keluarga.rt as rt', 'kartu_keluarga.rw as rw', 'kartu_keluarga.id_kk as kk', 'warga.pekerjaan as pekerjaan')->where('warga.nama', 'Like', '%' . $this->nama . '%')->orWhere('nik', 'Like', '%' . $this->nama . '%')->orWhere('pekerjaan', 'Like', '%' . $this->nama . '%')->orWhere('agama.nama', 'Like', '%' . $this->nama . '%')->orWhere('kartu_keluarga.id_kk', 'Like', '%' . $this->nama . '%')->orWhere('kartu_keluarga.rt', 'Like', '%' . $this->nama . '%')->orWhere('kartu_keluarga.rw', 'Like', '%' . $this->nama . '%')->get();
-        return view('warga.export', compact('data'));
+        return view('Warga.export', compact('data'));
     }
 }
