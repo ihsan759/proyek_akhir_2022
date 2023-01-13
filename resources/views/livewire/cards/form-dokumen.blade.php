@@ -3,7 +3,9 @@
         @csrf
         <div class="px-3">
             <label>Nama File</label>
-            <input type="text" name="nama" class="w-full bg-gray-200 py-3 px-2 rounded shadow-sm border border-gray-200 focus:outline-none mt-2">
+            <input type="text" name="nama"
+                class="w-full bg-gray-200 py-3 px-2 rounded shadow-sm border border-gray-200 focus:outline-none mt-2"
+                value="{{ old('nama') }}">
             @error('nama')
                 <div class="text-red-500">
                     {{ $message }}
@@ -12,7 +14,8 @@
         </div>
         <div class="mt-3 px-3">
             <label>File</label>
-            <input type="file" name="file" class="w-full bg-gray-200 p-2 rounded shadow-sm border border-gray-200 focus:outline-none mt-2">
+            <input type="file" name="file"
+                class="w-full bg-gray-200 p-2 rounded shadow-sm border border-gray-200 focus:outline-none mt-2">
             @error('file')
                 <div class="text-red-500">
                     {{ $message }}
@@ -20,7 +23,8 @@
             @enderror
         </div>
         <div class="px-3 mt-5">
-            <button type="submit" class="bg-blue-500 hover:bg-blue-800 text-white px-3 py-2 rounded-lg w-full">Upload</button>
+            <button type="submit"
+                class="bg-blue-500 hover:bg-blue-800 text-white px-3 py-2 rounded-lg w-full">Upload</button>
         </div>
     </form>
 </div>
