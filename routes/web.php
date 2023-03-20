@@ -25,7 +25,7 @@ Route::get('/home', [HomeController::class, "index"])->name('home')->middleware(
 Route::prefix('akun')->group(function () {
     Route::controller(AkunController::class)->group(function () {
         Route::middleware(['auth', 'admin'])->group(function () {
-            Route::get('index', 'index')->name('akun');
+            Route::get('index', 'index')->name('akun.index');
             Route::post('store', 'store')->name('akun.store');
             Route::post('update', 'update')->name('akun.update');
             // Route::post('destroy', 'destroy')->name('akun.destroy');
