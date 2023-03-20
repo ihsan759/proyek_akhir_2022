@@ -67,7 +67,7 @@ class AkunController extends Controller
 
         $akun->delete();
 
-        return redirect()->route('akun')->with('message', 'Berhasil meng-nonaktifkan akun');
+        return redirect()->route('akun.index')->with('message', 'Berhasil meng-nonaktifkan akun');
     }
 
     // public function destroy(Request $request)
