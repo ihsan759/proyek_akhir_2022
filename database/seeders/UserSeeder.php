@@ -25,9 +25,11 @@ class UserSeeder extends Seeder
         User::query()->create([
             'nama' => 'Fulanah',
             'no_hp' => '0821475930385',
-            'role' => 1,
+            'role' => 2,
             'email' => 'fulanah@gmail.com',
-            'password' => 'admin'
+            'password' => 'admin',
+            'rt' => '1',
+            'rw' => '1'
         ]);
     }
 }

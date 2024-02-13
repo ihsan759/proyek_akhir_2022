@@ -47,7 +47,7 @@ class AkunController extends Controller
 
         User::query()->create($akun);
 
-        return redirect()->route('akun')->with('message', 'Berhasil membuat profile');
+        return redirect()->route('akun.index')->with('message', 'Berhasil membuat profile');
     }
 
     public function update(Request $request)
@@ -58,7 +58,7 @@ class AkunController extends Controller
 
         $user->save();
 
-        return redirect()->route('akun')->with('message', 'Berhasil update Akun');
+        return redirect()->route('akun.index')->with('message', 'Berhasil update Akun');
     }
 
     public function delete(Request $request)

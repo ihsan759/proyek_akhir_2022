@@ -5,7 +5,7 @@
         <div class="w-full lg:w-1/2 pr-0 lg:pr-2 shadow-lg">
             <div class="p-6 bg-white">
                 <p class="text-xl pb-3 flex items-center">
-                    Jumlah Pria : {{$countpria}}
+                    Jumlah Pria : {{ $countpria }}
                 </p>
             </div>
         </div>
